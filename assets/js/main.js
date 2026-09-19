@@ -327,7 +327,7 @@
 
 
 /* ==========================================================================
-   数字人 · 小智（对话助手）
+   数字人 · 小沃（对话助手）
    ========================================================================== */
 (function () {
   'use strict';
@@ -359,7 +359,7 @@
   const KB = [
     {
       keys: ['你好', '您好', 'hi', 'hello', '嗨', '在吗', '早上好', '下午好', '晚上好'],
-      reply: '您好！我是精智数字人「小智」，很高兴为您服务。\n关于精智的公司介绍、业务板块、工业AI、资质荣誉或联系方式，您都可以问我，也可以点击下面的快捷问题。',
+      reply: '您好！我是数字人「小沃」，由蓝沃AI驱动，很高兴为您服务。\n关于精智的公司介绍、业务板块、工业AI、资质荣誉或联系方式，您都可以问我，也可以点击下面的快捷问题。',
     },
     {
       keys: ['公司', '精智', '介绍', '是谁', '什么公司', '概况', '历史', '发展'],
@@ -613,7 +613,7 @@
     wrap.className = 'dh-msg dh-msg-' + who;
     const meta = document.createElement('div');
     meta.className = 'dh-msg-meta';
-    meta.textContent = who === 'ai' ? '小智' : '您';
+    meta.textContent = who === 'ai' ? '小沃' : '您';
     const bubble = document.createElement('div');
     bubble.className = 'dh-bubble';
     bubble.textContent = text;

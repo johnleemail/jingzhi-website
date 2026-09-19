@@ -1069,7 +1069,7 @@ html.no-js .loader { display: none; }
 .dh-btn {
   position: relative;
   width: 58px; height: 58px; border-radius: 50%;
-  background: linear-gradient(160deg, #101b30, #0a1322);
+  background: radial-gradient(circle at 50% 32%, rgba(47, 211, 223, 0.22), rgba(16, 27, 48, 0.96) 62%);
   border: 1px solid rgba(47, 211, 223, 0.45);
   display: flex; align-items: center; justify-content: center;
   box-shadow: 0 14px 40px rgba(2, 6, 16, 0.7), 0 0 24px rgba(47, 211, 223, 0.14);
@@ -1081,7 +1081,7 @@ html.no-js .loader { display: none; }
   box-shadow: 0 18px 50px rgba(2, 6, 16, 0.8), 0 0 40px rgba(47, 211, 223, 0.3);
 }
 @keyframes dhFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-.dh-avatar { width: 46px; height: 46px; display: block; }
+.dh-avatar { width: 46px; height: 46px; display: block; border-radius: 50%; object-fit: contain; filter: drop-shadow(0 0 10px rgba(47, 211, 223, 0.35)); }
 
 .dh-btn-ring {
   position: absolute; inset: -3px; border-radius: 50%;
@@ -1124,7 +1124,7 @@ html.no-js .loader { display: none; }
   border-bottom: 1px solid var(--line-soft);
   background: linear-gradient(120deg, rgba(47, 211, 223, 0.07), transparent 65%);
 }
-.dh-head-avatar { width: 46px; height: 46px; flex-shrink: 0; }
+.dh-head-avatar { width: 46px; height: 46px; flex-shrink: 0; border-radius: 50%; object-fit: contain; }
 .dh-head-info { flex: 1; min-width: 0; }
 .dh-head-info h4 { font-size: 15.5px; letter-spacing: 0.03em; }
 .dh-head-info p { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 6px; margin-top: 2px; }
@@ -1225,17 +1225,10 @@ html.no-js .loader { display: none; }
 .dh-foot button:hover { transform: scale(1.06); box-shadow: 0 12px 30px rgba(47, 211, 223, 0.45); }
 
 /* 头像动画：眨眼 / 说话 / 扫描 */
-.dh-eyes { transform-origin: 60px 52px; animation: dhBlink 4.8s ease-in-out infinite; }
-@keyframes dhBlink { 0%, 92%, 100% { transform: scaleY(1); } 94%, 96% { transform: scaleY(0.08); } }
-.dh-ring { fill: none; stroke: url(#dhRingGrad); stroke-width: 2.4; stroke-dasharray: 60 285; stroke-linecap: round; animation: dhSpin 9s linear infinite; transform-origin: 60px 60px; }
-.dh-ring2 { fill: none; stroke: rgba(47, 211, 223, 0.22); stroke-width: 1.2; stroke-dasharray: 4 7; }
-.dh-scan { animation: dhScan 3.2s ease-in-out infinite; }
-@keyframes dhScan { 0%, 100% { opacity: 0.15; transform: translateY(0); } 50% { opacity: 0.8; transform: translateY(-6px); } }
-.dh-mouth-talk { opacity: 0; }
-.dh-speaking .dh-mouth-idle { opacity: 0; }
-.dh-speaking .dh-mouth-talk { opacity: 1; animation: dhTalk 0.32s ease-in-out infinite alternate; }
-@keyframes dhTalk { from { transform: scaleY(0.35); } to { transform: scaleY(1.15); } }
-.dh-speaking .dh-ring { animation-duration: 3.2s; }
+/* 说话状态：头像轻微呼吸 */
+.dh-speaking .dh-avatar { animation: dhAvatarTalk 0.6s ease-in-out infinite alternate; }
+.dh-speaking .dh-btn-ring { animation-duration: 4s; }
+@keyframes dhAvatarTalk { from { transform: scale(1); } to { transform: scale(1.1); } }
 
 /* 返回顶部按钮上移，避免遮挡 */
 .backtop { bottom: 104px; }
@@ -1244,5 +1237,5 @@ html.no-js .loader { display: none; }
 @media (max-width: 640px) {
   .dh { right: 16px; bottom: 18px; }
   .dh-btn { width: 62px; height: 62px; }
-  .dh-avatar { width: 48px; height: 48px; }
+  .dh-avatar { width: 40px; height: 40px; }
   

@@ -1047,55 +1047,22 @@
   <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </button>
 
-<!-- ============ 数字人 · 小智 ============ -->
-<svg class="dh-defs" aria-hidden="true" style="position:absolute;width:0;height:0">
-  <defs>
-    <linearGradient id="dhFaceGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#12203a"/>
-      <stop offset="100%" stop-color="#0a1322"/>
-    </linearGradient>
-    <linearGradient id="dhRingGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#2fd3df"/>
-      <stop offset="55%" stop-color="#4f8cff"/>
-      <stop offset="100%" stop-color="#2fd3df"/>
-    </linearGradient>
-  </defs>
-  <symbol id="dhAvatarSym" viewBox="0 0 120 120">
-    <circle class="dh-ring" cx="60" cy="60" r="55"/>
-    <circle class="dh-ring2" cx="60" cy="60" r="47"/>
-    <circle cx="60" cy="60" r="42" fill="url(#dhFaceGrad)"/>
-    <g class="dh-face">
-      <g class="dh-eyes">
-        <ellipse cx="46.5" cy="52" rx="5.5" ry="7" fill="#dcebfa"/>
-        <ellipse cx="73.5" cy="52" rx="5.5" ry="7" fill="#dcebfa"/>
-        <circle class="dh-pupil" cx="47" cy="53" r="2.8" fill="#0a1322"/>
-        <circle class="dh-pupil" cx="74" cy="53" r="2.8" fill="#0a1322"/>
-      </g>
-      <circle class="dh-glow-eye" cx="47" cy="53" r="1.2" fill="#2fd3df" opacity="0.9"/>
-      <circle class="dh-glow-eye" cx="74" cy="53" r="1.2" fill="#2fd3df" opacity="0.9"/>
-      <path class="dh-mouth-idle" d="M48.5 70.5 Q60 80 71.5 70.5" fill="none" stroke="#dcebfa" stroke-width="2.6" stroke-linecap="round"/>
-      <ellipse class="dh-mouth-talk" cx="60" cy="74" rx="7" ry="4.5" fill="#2fd3df"/>
-    </g>
-    <path class="dh-scan" d="M18 96h84" stroke="url(#dhRingGrad)" stroke-width="1.4" stroke-linecap="round" opacity="0.7"/>
-  </symbol>
-</svg>
-
+<!-- ============ 数字人 · 小沃 ============ -->
 <div class="dh" id="digitalHuman">
 
   <!-- 悬浮按钮 -->
   <button class="dh-btn" id="dhBtn" aria-label="打开数字人助手">
     <span class="dh-btn-ring" aria-hidden="true"></span>
-    <svg class="dh-avatar" aria-hidden="true"><use href="#dhAvatarSym"></use></svg>
-    <span class="dh-btn-label">数字人</span>
+    <img class="dh-avatar" src="assets/img/xiaowo.png" alt="数字人小沃">
     <span class="dh-badge" id="dhBadge" aria-hidden="true"></span>
   </button>
 
   <!-- 对话面板 -->
-  <div class="dh-panel" id="dhPanel" role="dialog" aria-label="数字人助手小智" aria-hidden="true">
+  <div class="dh-panel" id="dhPanel" role="dialog" aria-label="数字人助手小沃" aria-hidden="true">
     <div class="dh-head">
-      <svg class="dh-head-avatar" aria-hidden="true"><use href="#dhAvatarSym"></use></svg>
+      <img class="dh-head-avatar" src="assets/img/xiaowo.png" alt="数字人小沃">
       <div class="dh-head-info">
-        <h4>精智数字人 · 小智</h4>
+        <h4>数字人 · 小沃</h4>
         <p><span class="dh-online-dot" aria-hidden="true"></span>在线 · 为您介绍精智</p>
       </div>
       <div class="dh-head-tools">
@@ -1110,8 +1077,8 @@
 
     <div class="dh-body" id="dhBody">
       <div class="dh-msg dh-msg-ai">
-        <div class="dh-msg-meta">小智</div>
-        <div class="dh-bubble">您好，我是精智数字人「小智」。关于精智的公司、产品、工业AI或联系方式，都可以问我～</div>
+        <div class="dh-msg-meta">小沃</div>
+        <div class="dh-bubble">您好，我是数字人「小沃」，由蓝沃AI驱动。关于精智的公司、产品、工业AI或联系方式，都可以问我～</div>
       </div>
       <div class="dh-chips" id="dhChips">
         <button data-q="公司介绍">公司介绍</button>
