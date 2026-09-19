@@ -733,13 +733,47 @@
     });
   });
 
-  // 默认展开第一条新闻（视频），打开网站立即可见
-  const first = items[0];
-  if (first) {
-    first.classList.add('open');
-    const fh = first.querySelector('.news-item-head');
-    if (fh) fh.setAttribute('aria-expanded', 'true');
-    const iframe = first.querySelector('iframe[data-src]');
+  // 供外部（最新要闻列表）调用的打开函数
+  function openItem(idx) {
+    const item = items[idx];
+    if (!item) return;
+    items.forEach((o) => {
+      o.classList.remove('open');
+      const h = o.querySelector('.news-item-head');
+      if (h) h.setAttribute('aria-expanded', 'false');
+    });
+    item.classList.add('open');
+    const head = item.querySelector('.news-item-head');
+    if (head) head.setAttribute('aria-expanded', 'true');
+    const iframe = item.querySelector('iframe[data-src]');
     if (iframe && !iframe.getAttribute('src')) iframe.src = iframe.dataset.src;
   }
+  window.__openNewsItem = openItem;
+
+  // 默认展开第一条新闻（视频），打开网站立即可见
+  openItem(0);
+})();
+
+
+/* ==========================================================================
+   最新要闻 · 点击跳转新闻中心并展开对应条目
+   ========================================================================== */
+(function () {
+  'use strict';
+
+  const triggers = document.querySelectorAll('[data-news]');
+  if (!triggers.length) return;
+
+  triggers.forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      const idx = parseInt(el.dataset.news, 10);
+      const newsSec = document.getElementById('news');
+      if (!newsSec) return;
+      newsSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => {
+        if (typeof window.__openNewsItem === 'function') window.__openNewsItem(idx);
+      }, 650);
+    });
+  });
 })();
