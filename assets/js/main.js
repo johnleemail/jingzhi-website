@@ -693,3 +693,53 @@
   });
 })();
 
+
+
+/* ==========================================================================
+   精智前沿 · 新闻手风琴（点击展开）
+   ========================================================================== */
+(function () {
+  'use strict';
+
+  const items = document.querySelectorAll('.news-item');
+  if (!items.length) return;
+
+  items.forEach((item) => {
+    const head = item.querySelector('.news-item-head');
+    const body = item.querySelector('.news-item-body');
+    if (!head || !body) return;
+    body.removeAttribute('hidden');
+
+    head.addEventListener('click', () => {
+      const willOpen = !item.classList.contains('open');
+      // 单开模式：关闭其他
+      items.forEach((o) => {
+        o.classList.remove('open');
+        const h = o.querySelector('.news-item-head');
+        if (h) h.setAttribute('aria-expanded', 'false');
+      });
+      if (willOpen) {
+        item.classList.add('open');
+        head.setAttribute('aria-expanded', 'true');
+        // 视频 iframe 首次展开时才加载
+        const iframe = item.querySelector('iframe[data-src]');
+        if (iframe && !iframe.getAttribute('src')) iframe.src = iframe.dataset.src;
+        // 展开后若顶部被遮挡，滚动到可见位置
+        setTimeout(() => {
+          const r = item.getBoundingClientRect();
+          if (r.top < 80) item.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 430);
+      }
+    });
+  });
+
+  // 默认展开第一条新闻（视频），打开网站立即可见
+  const first = items[0];
+  if (first) {
+    first.classList.add('open');
+    const fh = first.querySelector('.news-item-head');
+    if (fh) fh.setAttribute('aria-expanded', 'true');
+    const iframe = first.querySelector('iframe[data-src]');
+    if (iframe && !iframe.getAttribute('src')) iframe.src = iframe.dataset.src;
+  }
+})();
